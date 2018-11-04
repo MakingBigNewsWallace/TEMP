@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html >
+<html  >
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="CSScontrol-TASK2-1.css"/>
+<title>网页时钟</title> 
+
+<script type="text/javascript">
+    function time()
+     {
+        var clock = new Date();
+        var hour = clock.getHours();
+        var minute = clock.getMinutes();
+        var second = clock.getSeconds();
+        function adjust(x) {
+            if (x < 10) {
+                x = "0" + second;
+            } return x
+      }
+        hour = adjust(hour);
+        minute = adjust(minute);
+        second = adjust(second);
+        cycle();
+        function cycle() 
+        {
+            if (second > 58)
+             {
+                second = 59;
+                document.getElementById('txt').innerHTML = hour + ":" + minute + ":" + second + "-1s";
+            }
+
+              else if (clock.getMilliseconds() < 500) 
+              {
+                document.getElementById('txt').innerHTML = hour + ":" + minute + ":" + second + "+1s";
+              
+              } else 
+              {
+                document.getElementById('txt').innerHTML = hour + ":" + minute + ":" + second;
+               
+              }
+           } t = setTimeout(function () { time() }, 500);
+       }
+  //  function change(){
+    //<link rel="stylesheet" type="text/css" href="CSScontrol-TASK2-2.css"/>
+    //}
+
+
+</script>
+
+</head>
+
+<body onload="time()">
+<h1 id="id1">here </h1>
+<button type=button onclick="document.getElementById("id1")style.color='red'">
+<div id="txt"></div>
+
+
+</body>
+</html>
